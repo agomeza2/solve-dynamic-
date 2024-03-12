@@ -1,42 +1,43 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, simpledialog
 
-class DataEntryPage:
-    def __init__(self, master, button_number):
-        self.master = master
-        self.button_number = button_number
-
-        self.entry_label = tk.Label(master, text=f"Enter data for Button {button_number}:")
-        self.entry_label.pack()
-
-        self.data_entry = tk.Entry(master)
-        self.data_entry.pack()
-
-        self.submit_button = tk.Button(master, text="Submit", command=self.submit_data)
-        self.submit_button.pack()
-
-    def submit_data(self):
-        data = self.data_entry.get()
-        messagebox.showinfo("Data Submitted", f"Data for Button {self.button_number}: {data}")
-
-class MainApplication:
+class GUI:
     def __init__(self, master):
         self.master = master
-        self.master.title("Wellcome to Solve Dynamics")
+        self.master.title("Interfaz Gráfica")
 
-        self.buttons = []
-        for i in range(1, 18):
-            button = tk.Button(master, text=f"Button {i}", command=lambda num=i: self.open_data_entry(num))
+        self.buttons = [
+            "MUR", "MURA", "MURAXA", "MURAXAYA", "MURAXAZA", "MURAYAZA",
+            "MURA3", "Plano inclinado", "Plano inclinado polea", "Péndulo",
+            "Péndulo resorte", "Resorte", "Colisión lineal elástica",
+            "Colisión lineal inelástica"
+        ]
+
+        for button_text in self.buttons:
+            button = tk.Button(master, text=button_text, command=lambda text=button_text: self.open_dialog(text))
             button.pack()
-            self.buttons.append(button)
 
-    def open_data_entry(self, button_number):
-        top = tk.Toplevel(self.master)
-        page = DataEntryPage(top, button_number)
+    def open_dialog(self, button_text):
+        variables = self.get_variables()
+        if variables:
+            messagebox.showinfo("Variables", f"Variables para {button_text}: {variables}")
+
+    def get_variables(self):
+        variables = []
+        variables.append(simpledialog.askfloat("Variables", "Ingrese x inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese y inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese z inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese ángulo inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en x inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en y inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en z inicial:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese masa del objeto 1:"))
+        variables.append(simpledialog.askfloat("Variables", "Ingrese masa del objeto 2:"))
+        return variables
 
 def main():
     root = tk.Tk()
-    app = MainApplication(root)
+    app = GUI(root)
     root.mainloop()
 
 if __name__ == "__main__":
