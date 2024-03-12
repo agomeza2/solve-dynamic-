@@ -7,10 +7,9 @@ class GUI:
         self.master.title("Interfaz Gráfica")
 
         self.buttons = [
-            "MUR", "MURA", "MURAXA", "MURAXAYA", "MURAXAZA", "MURAYAZA",
-            "MURA3", "Plano inclinado", "Plano inclinado polea", "Péndulo",
-            "Péndulo resorte", "Resorte", "Colisión lineal elástica",
-            "Colisión lineal inelástica"
+            "MUR", "MURA", "MURAXA", "MURAXAYA", "MURAXAZA", "MURAYAZA", "MURA3",
+            "Plano inclinado", "Plano inclinado polea", "Péndulo", "Péndulo resorte",
+            "Resorte", "Colisión lineal elástica", "Colisión lineal inelástica"
         ]
 
         for button_text in self.buttons:
@@ -18,21 +17,49 @@ class GUI:
             button.pack()
 
     def open_dialog(self, button_text):
-        variables = self.get_variables()
+        if button_text == "MUR":
+            variables = self.get_variables(["Velocidad inicial", "Distancia"])
+        elif button_text == "MURA":
+            variables = self.get_variables(["Velocidad inicial", "X inicial", "Aceleración"])
+        elif button_text == "MURAXA":
+            variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
+                                             "Velocidad en Y", "Distancia en Y", "Velocidad en Z", "Distancia en Z"])
+        elif button_text == "MURAXAYA":
+            variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
+                                             "Velocidad inicial en Y", "Y inicial","Aceleracion en Y", "Velocidad en Z", "Distancia en Z"])
+        elif button_text == "MURAXAZA":
+            variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
+                                             "Velocidad en Y", "distancia en Y ","Velocidad en Z", "Z inicial", "Aceleracion en Z"])
+        elif button_text == "MURAYAZA":
+            variables = self.get_variables(["Velocidad en X", "distancia en X", "Aceleración en Y",
+                                             "Velocidad inicial en Y", "Y inicial","Aceleracion en Z", "Velocdiad inicial", "Aceleracion en Z"])
+        elif button_text == "MURA3":
+            variables = self.get_variables(["Velocidad inicial en X", "X inicial","Aceleracion en X", "Aceleración en Y",
+                                             "Velocidad inicial en Y", "Y inicial","Aceleracion en Z", "Velocdiad inicial", "Aceleracion en Z"])
+        elif button_text == "Plano inclinado":
+            variables = self.get_variables(["Masa objeto", "angulo de inclinacion"])
+        elif button_text == "Plano inclinado polea":
+            variables = self.get_variables(["Masa ladrillo 1","masa ladrillo 2","angulo de inclinacion"])
+        elif button_text == "Péndulo":
+            variables = self.get_variables(["Masa objeto","angulo inicial"])
+        elif button_text == "Péndulo resorte":
+            variables = self.get_variables(["Masa objeto","angulo inicial","constante del resorte"])
+        elif button_text == "Resorte":
+            variables = self.get_variables(["Masa objeto","constante del resorte","distancia de compresion"])
+        elif button_text == "Colisión lineal elástica":
+            variables = self.get_variables(["Masa ladrillo 1","masa ladrillo 2","distancia entre los ladrillos","velocidad inicial ladrillo 1","velocidad inicial ladrillo 2"])
+        elif button_text == "Colisión lineal inelástica":
+            variables = self.get_variables(["Masa ladrillo 1","masa ladrillo 2","distancia entre los ladrillos","velocidad inicial ladrillo 1","velocidad inicial ladrillo 2"])   
+            
+
+            
         if variables:
             messagebox.showinfo("Variables", f"Variables para {button_text}: {variables}")
 
-    def get_variables(self):
+    def get_variables(self, variable_names):
         variables = []
-        variables.append(simpledialog.askfloat("Variables", "Ingrese x inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese y inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese z inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese ángulo inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en x inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en y inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese velocidad en z inicial:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese masa del objeto 1:"))
-        variables.append(simpledialog.askfloat("Variables", "Ingrese masa del objeto 2:"))
+        for name in variable_names:
+            variables.append(simpledialog.askfloat("Variables", f"Ingrese {name}:"))
         return variables
 
 def main():
