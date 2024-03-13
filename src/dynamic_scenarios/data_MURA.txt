@@ -1,0 +1,5 @@
+Variables para MURA:
+Velocidad inicial: 2.0
+X inicial: 2.0
+Aceleración: 2.0
+

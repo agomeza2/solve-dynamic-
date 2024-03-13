@@ -1,0 +1,4 @@
+Variables para MUR:
+Velocidad inicial: 2.0
+Distancia: 2.0
+

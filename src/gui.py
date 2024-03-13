@@ -1,3 +1,4 @@
+import os 
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 
@@ -15,13 +16,16 @@ class GUI:
         for button_text in self.buttons:
             button = tk.Button(master, text=button_text, command=lambda text=button_text: self.open_dialog(text))
             button.pack()
-    def save_to_file(self, button_text, variables,variable_names):
-        with open(f"data_{button_text}.txt", "w") as file:
+    def save_to_file(self, button_text, variables, variable_names):
+        folder_path = "dynamic_scenarios"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)  # Create the directory if it doesn't exist
+        file_path = f"{folder_path}/data_{button_text}.txt"
+        with open(file_path, "w") as file:
             file.write(f"Variables para {button_text}:\n")
             for name, value in zip(variable_names, variables):
                 file.write(f"{name}: {value}\n")
             file.write("\n")
-
     def open_dialog(self, button_text):
         if button_text == "MUR":
             variables = self.get_variables(["Velocidad inicial", "Distancia"])
