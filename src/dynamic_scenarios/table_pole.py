@@ -1,4 +1,11 @@
 from vpython import* 
+from readfile import * 
+
+filename ='data_MURA.txt'
+data_array = read_file(filename)
+data_array1 = filter_numbers(data_array)
+data = float_array(data_array1)
+
 # creamos la cuerda con cilindros 
 cuerda_h = cylinder(pos=vec(-5.5,0,0),axis=vec(8.5,0,0), radius=0.1,color=color.yellow)
 cuerda_v =cylinder(pos=vec(-5.5,0,0),axis=vec(0,-5,0),radius=0.1,color=color.yellow)

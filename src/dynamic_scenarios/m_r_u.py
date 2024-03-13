@@ -1,5 +1,6 @@
 from readfile import * 
 
-filename =''
+filename ='data_MUR.txt'
 data_array = read_file(filename)
-print(data_array) 
+data_array1 = filter_numbers(data_array)
+data = float_array(data_array1)

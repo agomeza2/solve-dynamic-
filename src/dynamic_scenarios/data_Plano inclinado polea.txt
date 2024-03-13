@@ -1,0 +1,5 @@
+Variables para Plano inclinado polea:
+Masa ladrillo 1: 2.0
+masa ladrillo 2: 2.0
+angulo de inclinacion: 2.0
+

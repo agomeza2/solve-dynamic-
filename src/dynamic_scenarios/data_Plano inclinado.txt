@@ -1,0 +1,4 @@
+Variables para Plano inclinado:
+Masa objeto: 2.0
+angulo de inclinacion: 2.0
+

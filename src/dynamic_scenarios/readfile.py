@@ -1,3 +1,4 @@
+import re 
 def read_file(filename):
     data = []
     with open(filename, 'r') as file:
@@ -10,3 +11,10 @@ def read_file(filename):
     return data
 
 
+def filter_numbers(array):
+    number_pattern = re.compile(r'^-?\d+(\.\d+)?$')
+    return [x for x in array if number_pattern.match(x)]
+    
+def float_array(array):
+    num_array =  [float(x) for x in array]
+    return num_array

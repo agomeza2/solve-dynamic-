@@ -1,4 +1,11 @@
 from vpython import * 
+from readfile import * 
+
+filename ='data_MURA.txt'
+data_array = read_file(filename)
+data_array1 = filter_numbers(data_array)
+data = float_array(data_array1)
+
 plano2 = box(pos=vec(0,4.45,0),size=vec(20,1,20),axis=vec(1,-0.2,0),color=color.yellow) #planos amarillos
 plano1 = box(pos=vec(-20,5,0),size=vec(20,1,20),axis=vec(1,0.2,0),color=color.yellow)
 bloque2=box(pos=vec(0,6,0),size=vec(7.626,2.729,5),axis=vec(1,-0.2,0),color=color.red)#bloque de la derecha 
