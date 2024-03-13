@@ -1,0 +1,5 @@
+Variables para Péndulo resorte:
+Masa objeto: 2.0
+angulo inicial: 2.0
+constante del resorte: 2.0
+

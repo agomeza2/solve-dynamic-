@@ -1,0 +1,10 @@
+Variables para MURAYAZA:
+Velocidad en X: 2.0
+distancia en X: 2.0
+Aceleración en Y: 2.0
+Velocidad inicial en Y: 2.0
+Y inicial: 2.0
+Aceleracion en Z: 2.0
+Velocdiad inicial: 2.0
+Aceleracion en Z: 2.0
+
