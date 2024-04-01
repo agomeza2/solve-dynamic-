@@ -80,11 +80,38 @@ class GUI:
             variables = self.get_variables(["Masa ladrillo 1","masa ladrillo 2","distancia entre los ladrillos","velocidad inicial ladrillo 1","velocidad inicial ladrillo 2"])   
             variable_names=["Masa ladrillo 1","masa ladrillo 2","distancia entre los ladrillos","velocidad inicial ladrillo 1","velocidad inicial ladrillo 2"]
 
-            
         if variables:
-            self.save_to_file(button_text,variables,variable_names)
+            self.save_to_file(button_text.replace(" ", ""),variables,variable_names)
             messagebox.showinfo("Variables", f"Variables para {button_text}: {variables}")
-
+            if button_text == "MUR":
+                os.system('python dynamic_scenarios/m_r_u.py')               
+            elif button_text == "MURA":
+                os.system('python dynamic_scenarios/m_r_u_a.py')
+            elif button_text == "MURAXA":
+                os.system('python dynamic_scenarios/m_r_u_xA.py')
+            elif button_text == "MURAXAYA":
+                os.system('python dynamic_scenarios/m_r_u_xA_yA.py')
+            elif button_text == "MURAXAZA":
+                os.system('python dynamic_scenarios/m_r_u_xA_zA.py')
+            elif button_text == "MURAYAZA":
+                os.system('python dynamic_scenarios/m_r_u_yA_zA.py')
+            elif button_text == "MURA3":
+                os.system('python dynamic_scenarios/m_r_u_A_3.py')
+            elif button_text == "Plano inclinado":
+                os.system('python dynamic_scenarios/plane.py')
+            elif button_text == "Plano inclinado polea":
+                os.system('python dynamic_scenarios/plane_pole.py')
+            elif button_text == "Péndulo":
+                os.system('python dynamic_scenarios/pendulum.py')   
+            elif button_text == "Péndulo resorte":
+                os.system('python dynamic_scenarios/pedulum-spring.py')       
+            elif button_text == "Resorte":
+                os.system('python dynamic_scenarios/spring.py') 
+            elif button_text == "Colisión lineal elástica":
+                os.system('python dynamic_scenarios/elastic-collision.py')       
+            elif button_text == "Colisión lineal inelástica":
+                os.system('python dynamic_scenarios/inelastic-collision.py')       
+                                  
     def get_variables(self, variable_names):
         variables = []
         for name in variable_names:

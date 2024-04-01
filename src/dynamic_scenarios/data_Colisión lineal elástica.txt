@@ -1,7 +1,0 @@
-Variables para Colisión lineal elástica:
-Masa ladrillo 1: 2.0
-masa ladrillo 2: 2.0
-distancia entre los ladrillos: 2.0
-velocidad inicial ladrillo 1: 2.0
-velocidad inicial ladrillo 2: 2.0
-

@@ -1,4 +1,0 @@
-Variables para Péndulo:
-Masa objeto: 2.0
-angulo inicial: 2.0
-
