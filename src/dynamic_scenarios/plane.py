@@ -1,11 +1,11 @@
 from vpython import * 
 from readfile import * 
 
-filename ='data_Plano inclinado.txt'
+"""filename ='data_Planoinclinado.txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
-
+"""
 floor=box(pos=vec(0,0,0), size=vec(25,2,2), color=color.red)
 floor2=box(pos=vec(0,0,0), size=vec(25,2,2), color=color.blue)
 cuerpo=box(pos=vec(0,0,0), size=vec(7.60,2.69,1), color=color.green)

@@ -1,7 +1,7 @@
 from vpython import * 
 from readfile import * 
 
-filename ='data_Plano inclinado polea.txt'
+filename ='data_Planoinclinado polea.txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
