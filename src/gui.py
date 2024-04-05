@@ -8,7 +8,13 @@ class GUI:
         self.master.title("Bienvenido a Solve Dynamics")
 
         self.buttons = [
-            "MUR", "MURA", "MURAXA", "MURAXAYA", "MURAXAZA", "MURAYAZA", "MURA3",
+            "MUR(movimiento rectilineo uniforme)", 
+            "MURA(movimiento rectilineo uniforme acelerado)", 
+            "MURAXA(movimiento rectilineo uniforme acelerado en el eje x)", 
+            "MURAXAYA(movimiento rectilineo uniforme acelerado en ejes x, y)", 
+            "MURAXAZA(movimiento rectilineo uniforme acelerado en ejes x,z)", 
+            "MURAYAZA(movimiento rectilineo uniforme en ejes y,z)", 
+            "MURA3(movimiento rectilineo uniforme acelerado en los 3 ejes)",
             "Plano inclinado", "Plano inclinado polea", "Péndulo", "Péndulo resorte",
             "Resorte", "Colisión lineal elástica", "Colisión lineal inelástica"
         ]
@@ -27,33 +33,33 @@ class GUI:
                 file.write(f"{name}: {value}\n")
             file.write("\n")
     def open_dialog(self, button_text):
-        if button_text == "MUR":
+        if button_text == "MUR(movimiento rectilineo uniforme)":
             variables = self.get_variables(["Velocidad inicial", "Distancia"])
             variable_names = ["Velocidad inicial", "Distancia"]
-        elif button_text == "MURA":
+        elif button_text == "MURA(movimiento rectilineo uniforme acelerado)":
             variables = self.get_variables(["Velocidad inicial", "X inicial", "Aceleración"])
             variable_names=["Velocidad inicial", "X inicial", "Aceleración"]
-        elif button_text == "MURAXA":
+        elif button_text == "MURAXA(movimiento rectilineo uniforme acelerado en el eje x)":
             variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad en Y", "Distancia en Y", "Velocidad en Z", "Distancia en Z"])
             variable_names=["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad en Y", "Distancia en Y", "Velocidad en Z", "Distancia en Z"]
-        elif button_text == "MURAXAYA":
+        elif button_text == "MURAXAYA(movimiento rectilineo uniforme acelerado en ejes x, y)":
             variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad inicial en Y", "Y inicial","Aceleracion en Y", "Velocidad en Z", "Distancia en Z"])
             variable_names=["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad inicial en Y", "Y inicial","Aceleracion en Y", "Velocidad en Z", "Distancia en Z"]
-        elif button_text == "MURAXAZA":
+        elif button_text == "MURAXAZA(movimiento rectilineo uniforme acelerado en ejes x,z)":
             variables = self.get_variables(["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad en Y", "distancia en Y ","Velocidad en Z", "Z inicial", "Aceleracion en Z"])
             variable_names=["Velocidad inicial en X", "X inicial", "Aceleración en X",
                                              "Velocidad en Y", "distancia en Y ","Velocidad en Z", "Z inicial", "Aceleracion en Z"]
-        elif button_text == "MURAYAZA":
+        elif button_text == "MURAYAZA(movimiento rectilineo uniforme en ejes y,z)":
             variables = self.get_variables(["Velocidad en X", "distancia en X", "Aceleración en Y",
                                              "Velocidad inicial en Y", "Y inicial","Aceleracion en Z", "Velocdiad inicial", "Aceleracion en Z"])
             variable_names=["Velocidad en X", "distancia en X", "Aceleración en Y",
                                              "Velocidad inicial en Y", "Y inicial","Aceleracion en Z", "Velocdiad inicial", "Aceleracion en Z"]
-        elif button_text == "MURA3":
+        elif button_text == "MURA3(movimiento rectilineo uniforme acelerado en los 3 ejes)":
             variables = self.get_variables(["Velocidad inicial en X", "X inicial","Aceleracion en X", "Aceleración en Y",
                                              "Velocidad inicial en Y", "Y inicial","Aceleracion en Z", "Velocdiad inicial", "Aceleracion en Z"])
             variable_names=["Velocidad inicial en X", "X inicial","Aceleracion en X", "Aceleración en Y",
@@ -83,19 +89,19 @@ class GUI:
         if variables:
             self.save_to_file(button_text.replace(" ", ""),variables,variable_names)
             messagebox.showinfo("Variables", f"Variables para {button_text}: {variables}")
-            if button_text == "MUR":
+            if button_text == "MUR(movimiento rectilineo uniforme)":
                 os.system('python dynamic_scenarios/m_r_u.py')               
-            elif button_text == "MURA":
+            elif button_text == "MURA(movimiento rectilineo uniforme acelerado)":
                 os.system('python dynamic_scenarios/m_r_u_a.py')
-            elif button_text == "MURAXA":
+            elif button_text == "MURAXA(movimiento rectilineo uniforme acelerado en el eje x)":
                 os.system('python dynamic_scenarios/m_r_u_xA.py')
-            elif button_text == "MURAXAYA":
+            elif button_text == "MURAXAYA(movimiento rectilineo uniforme acelerado en ejes x, y)":
                 os.system('python dynamic_scenarios/m_r_u_xA_yA.py')
-            elif button_text == "MURAXAZA":
+            elif button_text == "MURAXAZA(movimiento rectilineo uniforme acelerado en ejes x,z)":
                 os.system('python dynamic_scenarios/m_r_u_xA_zA.py')
-            elif button_text == "MURAYAZA":
+            elif button_text == "MURAYAZA(movimiento rectilineo uniforme en ejes y,z)":
                 os.system('python dynamic_scenarios/m_r_u_yA_zA.py')
-            elif button_text == "MURA3":
+            elif button_text == "MURA3(movimiento rectilineo uniforme acelerado en los 3 ejes)":
                 os.system('python dynamic_scenarios/m_r_u_A_3.py')
             elif button_text == "Plano inclinado":
                 os.system('python dynamic_scenarios/plane.py')
