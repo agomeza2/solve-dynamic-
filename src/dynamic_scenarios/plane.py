@@ -5,6 +5,11 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Planoinclinado
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
+m=data[0]
+tetha=data[1]
+
+if (tetha>45):
+    tetha = 45 
 
 floor=box(pos=vec(0,0,0), size=vec(25,2,2), color=color.red)
 floor2=box(pos=vec(0,0,0), size=vec(25,2,2), color=color.blue)
@@ -29,7 +34,7 @@ cuerpo.pos.x=-(dist_cuerpox+dist_floorx)/2
 flechaguia=arrow(pos=vec(dist_floorx,dist_floory,dist_floorz), shaftwidth=0.1, axis=vec(-12.5,0,0), color=color.green)
 flechaguia2=arrow(pos=vec(dist_floorx,dist_floory,dist_floorz), shaftwidth=0.1, axis=vec(-12.5,0,0), color=color.green)
 
-theta=13.86
+theta=tetha
 
 floor.rotate(angle=theta*pi/180,axis=vec(0,0,-(floor.size.z)/2), origin=vector((floor.size.x)/2,(floor.size.y)/2,1))
 cuerpo.rotate(angle=theta*pi/180,axis=vec(0,0,-(floor.size.z)/2), origin=vector((floor.size.x)/2,(floor.size.y)/2,1))
@@ -41,7 +46,7 @@ ang = flechaguia2.axis.diff_angle(flechaguia.axis)
 
 
 g=9.8
-cuerpo.m=0.781
+cuerpo.m=m
 t=0
 U=tan(ang)
 

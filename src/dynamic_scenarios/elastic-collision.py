@@ -5,17 +5,21 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Colisión line
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
-
+m1=data[0]
+m2=data[1]
+d=data[2]
+v01=data[3]
+v02=data[4]
 carroiz = box(pos=vec(-10,0,0),size=vec(2,2,2),color = color.blue)
-carrode = box(pos=vec(10,0,0),size=vec(2,2,2),color = color.red)
+carrode = box(pos=vec(d+10,0,0),size=vec(2,2,2),color = color.red)
 flechaiz = arrow(pos=vec(-10,0,0),axis=vec(3,0,0),color=color.yellow)
 piso = box(pos=vec(0,-0.9,0), size=vec(40,0.5,10),color=color.green)
 
-carroiz.vel=vec(2,0,0) #blocks velocity 
-carrode.vel=vec(0,0,0)
-flechaiz.vel=vec(2,0,0)
-carroiz.mass = 50 #blocks mass 
-carrode.mass =50 
+carroiz.vel=vec(v01,0,0) #blocks velocity 
+carrode.vel=vec(v02,0,0)
+flechaiz.vel=vec(v01,0,0)
+carroiz.mass = m1 #blocks mass 
+carrode.mass =m2 
 
 t = 0
 t2 =0

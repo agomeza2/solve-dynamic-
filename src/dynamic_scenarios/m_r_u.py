@@ -4,8 +4,8 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_MUR(movimiento
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
-print(data)
-
+v0=data[0]
+x=data[1]
 floor=box(pos=vec(0,-.02,0), size=vec(2,.02,.4))
 ball=sphere(pos=vec(-1,0,0), radius=0.02, color=color.red, make_trail=True)
 g=vec(0,-9.8,0)

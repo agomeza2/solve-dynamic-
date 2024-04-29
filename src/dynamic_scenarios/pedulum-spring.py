@@ -5,6 +5,9 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Pénduloresort
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
+m=data[0]
+tetha=data[1]
+k=data[2]
 
 techo = box(pos=vec(0,3,0),size=vec(3.5,0.1,1),color=color.blue) #techo
 #Resorte con constante(k) en dn/cm, dinas sobre centimetros 

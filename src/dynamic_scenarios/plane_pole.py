@@ -5,6 +5,9 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Planoinclinado
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
+m1=dta[0]
+m2=data[1]
+theta =data[2]
 
 plano2 = box(pos=vec(0,4.45,0),size=vec(20,1,20),axis=vec(1,-0.2,0),color=color.yellow) #planos amarillos
 plano1 = box(pos=vec(-20,5,0),size=vec(20,1,20),axis=vec(1,0.2,0),color=color.yellow)
@@ -16,8 +19,8 @@ cuerda_izq = cylinder(pos=vec(-15.8,7,0),axis=vec(6,1.3,0), radius=0.4,color=col
 cuerda_der =cylinder(pos=vec(-10,8.3,0),axis=vec(6,-1.3,0), radius=0.4,color=color.red) 
 piso=box(pos=vec(-10,0.553,0), size=vec(40,1,40),color=color.green)#piso
 
-bloque1.mass = 0.4  #masa del bloque azul
-bloque2.mass=0.3 #masa del bloque rojo 
+bloque1.mass = m1  #masa del bloque azul
+bloque2.mass=m2 #masa del bloque rojo 
 bloque1.vel=vec(0,0,0) #velocidades inciales
 bloque2.vel=vec(0,0,0)
 cuerda_der.vel=vec(0,0,0) 

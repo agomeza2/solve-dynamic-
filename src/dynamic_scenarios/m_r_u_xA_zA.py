@@ -4,6 +4,14 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_MURAXAZA(movim
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
+vx0=data[0]
+x0=data[1]
+ax=data[2]
+vy0=data[3]
+y0=data[4]
+vz0=data[5]
+z0=data[6]
+az=data[7]
 
 floor=box(pos=vec(0,-.02,0), size=vec(2,.02,.4))
 ball=sphere(pos=vec(-1,0,0), radius=0.02, color=color.red, make_trail=True)

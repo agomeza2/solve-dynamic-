@@ -4,6 +4,15 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_MURA3(movimien
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
+vx0=data[0]
+x0=data[1]
+ax=data[2]
+ay=data[3]
+vy0=data[4]
+y0=data[5]
+az=data[6]
+vz0=data[7]
+z0=data[8]
 
 floor=box(pos=vec(0,-.02,0), size=vec(2,.02,.4))
 ball=sphere(pos=vec(-1,0,0), radius=0.02, color=color.red, make_trail=True)
