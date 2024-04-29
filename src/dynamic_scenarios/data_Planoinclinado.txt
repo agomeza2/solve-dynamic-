@@ -1,0 +1,4 @@
+Variables para Planoinclinado:
+Masa objeto: 15.0
+angulo de inclinacion: 15.0
+
