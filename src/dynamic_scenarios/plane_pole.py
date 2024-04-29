@@ -5,7 +5,7 @@ filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Planoinclinado
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
-m1=dta[0]
+m1=data[0]
 m2=data[1]
 theta =data[2]
 
