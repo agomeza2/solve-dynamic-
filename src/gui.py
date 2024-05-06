@@ -19,9 +19,15 @@ class GUI:
             "Resorte", "Colisión lineal elástica", "Colisión lineal inelástica"
         ]
 
+        row = 0
+        column = 0
         for button_text in self.buttons:
             button = tk.Button(master, text=button_text, command=lambda text=button_text: self.open_dialog(text))
-            button.pack()
+            button.grid(row=row, column=column, padx=5, pady=5)
+            column += 1
+            if column > 2:  # Cambia el número de columnas según tu preferencia
+                column = 0
+                row += 1
     def save_to_file(self, button_text, variables, variable_names):
         folder_path = "dynamic_scenarios"
         if not os.path.exists(folder_path):

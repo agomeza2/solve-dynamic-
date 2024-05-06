@@ -12,12 +12,20 @@ y0=data[4]
 vz0=data[5]
 z0=data[6]
 
-floor=box(pos=vec(0,-.02,0), size=vec(2,.02,.4))
-ball=sphere(pos=vec(-1,0,0), radius=0.02, color=color.red, make_trail=True)
-g=vec(0,-9.8,0)
-ball.m=0.1 v0=4.0
-theta=60 #degrees ball.p=ball.m*v0*vec(cos(theta*pi/180),sin(theta*pi/180),0)
-t=0 dt=0.01
+floor=box(pos=vec(x0,y0-.02,z0), size=vec(2,.02,.4))
+ball=sphere(pos=vec(-1,y0,z0), radius=0.02, color=color.red, make_trail=True)
+a=vec(ax,0,0)
+v=vec(vx0,vy0,vz0) 
+ball.v=v
+ball.a=a
+tetha=30*pi/180
+phi=60*pi/180
+t=0 
+dt=0.25
 
-while ball.pos.y>=0: rate(100)
-Fnet = ball.p = ball.pos = t=t+dt
+while t<50: 
+    rate(200)
+    t+=dt 
+    ball.pos+=ball.v*dt
+    ball.v+=ball.a*dt
+    ball.a+=vec(cos(tetha)*sin(phi)*ax,sin(tetha)*sin(phi)*ay,cos(phi)*az)
