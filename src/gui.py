@@ -7,6 +7,12 @@ class GUI:
         self.master = master
         self.master.title("Bienvenido a Solve Dynamics")
 
+        self.background_image = tk.PhotoImage(file="~/Downloads/math.png")
+
+        # Create a label to display the background image
+        self.background_label = tk.Label(master, image=self.background_image)
+        self.background_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
         self.buttons = [
             "MUR(movimiento rectilineo uniforme)", 
             "MURA(movimiento rectilineo uniforme acelerado)", 
@@ -18,16 +24,12 @@ class GUI:
             "Plano inclinado", "Plano inclinado polea", "Péndulo", "Péndulo resorte",
             "Resorte", "Colisión lineal elástica", "Colisión lineal inelástica"
         ]
-
-        row = 0
-        column = 0
-        for button_text in self.buttons:
+        for idx, button_text in enumerate(self.buttons):
             button = tk.Button(master, text=button_text, command=lambda text=button_text: self.open_dialog(text))
+            row = idx // 3  # Calculate row number
+            column = idx % 3  # Calculate column number
             button.grid(row=row, column=column, padx=5, pady=5)
-            column += 1
-            if column > 2:  # Cambia el número de columnas según tu preferencia
-                column = 0
-                row += 1
+
     def save_to_file(self, button_text, variables, variable_names):
         folder_path = "dynamic_scenarios"
         if not os.path.exists(folder_path):
