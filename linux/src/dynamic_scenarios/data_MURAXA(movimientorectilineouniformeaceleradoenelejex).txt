@@ -1,0 +1,9 @@
+Variables para MURAXA(movimientorectilineouniformeaceleradoenelejex):
+Velocidad inicial en X: 2.0
+X inicial: 3.0
+Aceleración en X: 4.0
+Velocidad en Y: 4.0
+Distancia en Y: 4.0
+Velocidad en Z: 5.0
+Distancia en Z: 5.0
+
