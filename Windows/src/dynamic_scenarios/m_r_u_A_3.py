@@ -1,6 +1,6 @@
 from readfile import * 
 from vpython import * 
-filename ='C:\\Users\\Alex\\solve-dynamic-\\src\\dynamic_scenarios\\data_MURA3(movimientorectilineouniformeaceleradoenlos3ejes).txt'
+filename ='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_MURA3(movimientorectilineouniformeaceleradoenlos3ejes).txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
@@ -14,20 +14,32 @@ az=data[6]
 vz0=data[7]
 z0=data[8]
 
-floor=box(pos=vec(x0,y0-0.2,z0), size=vec(200,20,400))
-ball=sphere(pos=vec(x0,y0,z0), radius=0.02, color=color.red, make_trail=True)
-a=vec(ax,ay,az)
-v=vec(vx0,vy0,vz0) 
-ball.v=v
-ball.a=a
-tetha=30*pi/180
-phi=60*pi/180
-t=0 
-dt=0.25
+a= vector(ax, -ay, az)  # Acceleration due to gravity (m/s^2)
 
-while t<50: 
-    rate(200)
-    t+=dt 
-    ball.pos+=ball.v*dt
-    ball.v+=ball.a*dt
-    ball.a+=vec(cos(tetha)*sin(phi)*ax,sin(tetha)*sin(phi)*ay,cos(phi)*az)
+# Scene setup
+scene = canvas(title="Parabolic Motion", width=800, height=600)
+scene.autoscale = False
+
+# Ground
+ground = box(pos=vector(x0, y0-5, z0), size=vector(20, 0.1, 10), color=color.green)
+
+# Projectile
+projectile = sphere(pos=vector(x0, y0, z0), radius=0.3, color=color.red, make_trail=True, trail_type="points", retain=100)
+
+# Initial conditions
+projectile.velocity = vector(vx0, vy0, vz0)  # Initial velocity (m/s)
+t = 0  # Initial time (s)
+dt = 0.01  # Time step (s)
+
+# Main loop
+while projectile.pos.y >= 0:
+    rate(100)
+    
+    # Update position
+    projectile.pos += projectile.velocity * dt
+    
+    # Update velocity (considering gravity)
+    projectile.velocity += a * dt
+    
+    # Update time
+    t += dt

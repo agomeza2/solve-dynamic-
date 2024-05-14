@@ -1,6 +1,6 @@
 from readfile import * 
 from vpython import * 
-filename ='C:\\Users\\Alex\\solve-dynamic-\\src\\dynamic_scenarios\\data_MURA(movimientorectilineouniformeacelerado).txt'
+filename ='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_MURA(movimientorectilineouniformeacelerado).txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
@@ -9,20 +9,30 @@ x0=data[1]
 a=data[2]
 
 
-floor=box(pos=vec(x0,-.02,0), size=vec(2,.02,.4))
-ball=sphere(pos=vec(x0,0,0), radius=0.02, color=color.red, make_trail=True)
-a=vec(a,0,0)
-v=vec(v0,0,0) 
-ball.v=v
-ball.a=a
-tetha=30*pi/180
-phi=60*pi/180
-t=0 
-dt=0.25
+scene = canvas(title="Rectilinear Uniform Accelerated Motion", width=800, height=200)
+scene.autoscale = False
 
-while t<50: 
-    rate(200)
-    t+=dt 
-    ball.pos+=ball.v*dt
-    ball.v+=ball.a*dt
-    ball.a+=vec(cos(tetha)*sin(phi)*a,0,0)
+# Ground
+ground = box(pos=vector(x0, -1, 0), size=vector(20*x0, 0.1, 10), color=color.green)
+
+# Object
+object = box(pos=vector(-x0, 0, 0), size=vector(1, 1, 1), color=color.blue)
+
+# Initial conditions
+object.velocity=vec(v0,0,0) # Initial speed (m/s)
+object.acceleration = vec(a,0,0)  # Acceleration (m/s^2)
+dt = 0.01  # Time step (s)
+
+# Camera setup
+scene.camera.pos = vector(0, 5, 15)  # Set camera position
+scene.camera.axis = vector(0, -1, -3)  # Set camera orientation
+
+# Main loop
+while object.pos.x<=2*x0:
+    rate(100)
+    
+    # Update velocity
+    object.velocity+= object.acceleration * dt
+    
+    # Move object
+    object.pos+= object.velocity* dt

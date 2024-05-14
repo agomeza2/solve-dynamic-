@@ -1,0 +1,5 @@
+Variables para Resorte:
+Masa objeto: 5.0
+constante del resorte: 5.5
+distancia de compresion: 0.2
+

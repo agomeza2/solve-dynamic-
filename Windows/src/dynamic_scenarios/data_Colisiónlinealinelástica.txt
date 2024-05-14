@@ -1,0 +1,7 @@
+Variables para Colisiónlinealinelástica:
+Masa ladrillo 1: 25.0
+masa ladrillo 2: 35.0
+distancia entre los ladrillos: 12.0
+velocidad inicial ladrillo 1: 4.0
+velocidad inicial ladrillo 2: 0.0
+

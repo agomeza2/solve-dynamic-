@@ -1,35 +1,54 @@
 from readfile import * 
 from vpython import * 
-filename ='/home/tensem/solve-dynamic-/src/dynamic_scenarios/data_Resorte.txt'
+filename ='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_Resorte.txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
 m=data[0]
-k=data[1]
+k_s=data[1]
 x0=data[2]
 
-pared1=box(pos=vec(-16.9,3.5,0),size=vec(0.3,7,19.2),color=color.blue)
-pared1=box(pos=vec(16.9,3.5,0),size=vec(0.3,7,19.2),color=color.red)
-piso=box(pos=vec(0,0,0),size=vec(33.8,0.5,19.2),color=color.gray(0.5))
-resorte_izq=helix(pos=vec(-16.8,1.75,0),axis=vec(25.11,0,0),radius=0.8,constant=55000 ,thickness=0.1,coils=20,color=color.blue)
-resorte_der=helix(pos=vec(16.9,1.75,0),axis=vec(-8.69,0,0),radius=0.8,constant=57000 ,thickness=0.1,coils=20,color=color.red)
-masa=box(pos=vec(8.21,1.75,0),size=vec(3.5,3.5,3.5),color=color.yellow)
+L0=.1 #the natural length of the spring
+k=k_s #spring constant
 
-g=-978.362
-uk=0.3 
-#propiedades de los objetos
-masa.mass=289.4
-masa.vel=vec(0,0,0)
-masa.a=vec(0,0,0)
+#the holder is the top plate for the spring
+holder= box(pos=vec(-.1,.1,0), size=vec(.1,.005,.1))
 
-t=0 
-dt=0.00025
+#the ball and the spring should be obvious
+#note that the ball has a trail
+ball=sphere(pos=vec(-.1,-L0+.1,0), radius=0.02, color=color.red, make_trail=True)
+spring=helix(pos=holder.pos, axis=ball.pos-holder.pos, radius=.02, coils=10)
 
-while t<3:
-  rate(200)
-  t+=dt
-  masa.pos+=masa.vel*dt
-  resorte_izq.axis+=masa.vel*dt
-  resorte_der.axis+=masa.vel*dt
-  masa.vel+=masa.a*dt
-  masa.a=vec(((-(resorte_izq.constant+resorte_der.constant)/masa.mass)*masa.pos.x)+uk*g,0,0)
+ball.m=m #mass of the ball in kg
+ball.p=ball.m*vec(0,0,0) #starting momentum mass times velocity
+
+dr=vec(0,x0,0) #this is the displacement of the spring
+ball.pos=ball.pos+dr
+
+g=vec(0,-9.8,0) #gravitational field
+t=0
+dt=0.01 #size of the time step
+
+#putting the loop as "while True" means it runs forever
+#you could change this to while t< 10: or something
+while t<3: 
+    rate(100) #this says 100 calculations per second
+    
+    #L is the length of the spring, from the holder to the ball
+    L=ball.pos-holder.pos
+    
+    #remember that mag(R) gives the magnitude of vector R
+    #remember that norm(R) gives the unit vector for R
+    Fs=-k*(mag(L)-L0)*norm(L) #this is Hooke's law
+    
+    #this calculates the net force
+    F=Fs+ball.m*g
+    
+    #update the momentum
+    ball.p=ball.p+F*dt
+    
+    #update the position of the ball
+    ball.pos= ball.pos +ball.p*dt/ball.m
+    #this next line updates the spring
+    spring.axis=ball.pos-holder.pos
+    

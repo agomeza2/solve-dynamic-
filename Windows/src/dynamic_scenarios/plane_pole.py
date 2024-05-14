@@ -1,7 +1,7 @@
 from vpython import * 
 from readfile import * 
 
-filename ='C:\\Users\\Alex\\solve-dynamic-\\src\\dynamic_scenarios\\data_Planoinclinadopolea.txt'
+filename='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_Planoinclinadopolea.txt'
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)

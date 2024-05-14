@@ -7,28 +7,59 @@ data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
 m=data[0]
 tetha=data[1]
-k=data[2]
+k0=data[2]
 
-techo = box(pos=vec(0,3,0),size=vec(3.5,0.1,1),color=color.blue) #techo
-#Resorte con constante(k) en dn/cm, dinas sobre centimetros 
-resorte=helix(pos=vec(0,0,0),axis=vec(0,3,0),radius=0.3,constant=458607.1875 ,thickness=0.1,coils=20,color=color.red)
-#masas 
-masa=box(pos=vec(0,-0.2,0),size=vec(0.7,0.7,0.7),color=color.yellow)
-g =-978.362 #cm/s
-#propiedades de los objetos
-masa.mass = 600
-masa.vel=vec(0,0,0)
-resorte.vel=vec(0,0,0)
-masa.a=vec(0,0,0)
+if tetha>=90:
+    tetha = 45 
 
-t=0 
-dt = 0.3
-while(true):
-    rate(200)
-    t+=dt
-    masa.pos+=masa.vel*dt #actualizamos posicion de la masa 
-    resorte.pos+=resorte.vel*dt #para la ilusion del movimiento hacia abajo del resorte
-    resorte.axis-=masa.vel*dt #para que el resorte se elonge y se contraiga 
-    resorte.vel+=masa.a*dt #para la ilusion del movimiento hacia abajo
-    masa.vel+=masa.a*dt #actualizamos la velocidad de la masa 
-    masa.a=vec(0,((-masa.pos.y*resorte.constant)/masa.mass)+g,0)#actualizamos la aceleracion del movimiento del bloque
+g = 9.81  # Acceleration due to gravity (m/s^2)
+L = 3.0   # Length of the pendulum rod (m)
+k = k0 # Spring constant (N/m)
+theta0 = tetha  # Initial angle (radians)
+theta_dot0 = 0.0  # Initial angular velocity (radians/s)
+
+# Scene setup
+scene = canvas(title="Pendulum with Spring Compression", width=800, height=600)
+scene.autoscale = False
+
+# Ground
+ground = box(pos=vector(0, -L-1, 0), size=vector(20, 0.1, 1), color=color.green)
+
+# Pendulum bob
+bob = sphere(pos=vector(L * sin(theta0), -L * cos(theta0), 0), radius=0.2, color=color.blue)
+
+# Spring
+spring = helix(pos=vector(0, 0, 0), radius=0.1, color=color.gray(0.5))
+
+# Time setup
+t = 0
+dt = 0.01
+
+# Main loop
+while t<5:
+    rate(100)
+
+    # Calculate displacement and spring force
+    displacement = mag(bob.pos) - L
+    spring_force = -k * displacement * norm(bob.pos)
+    
+    # Total force
+    total_force = vector(0, -g, 0) + spring_force
+    
+    # Angular acceleration (from the equation of motion for a pendulum)
+    theta_double_dot = cross(bob.pos, total_force).z / (mag(bob.pos) ** 2 * L)
+    
+    # Update angular velocity and angle using Euler's method
+    theta_dot0 += theta_double_dot * dt
+    theta0 += theta_dot0 * dt
+    
+    # Update position of the pendulum bob and spring
+    bob.pos = vector(L * sin(theta0), -L * cos(theta0), 0)
+    spring.axis = bob.pos
+    
+    # Update spring length based on compression or decompression
+    spring_length = L + displacement
+    spring.length = spring_length
+    
+    # Update time
+    t += dt
