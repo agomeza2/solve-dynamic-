@@ -1,0 +1,5 @@
+Variables para Pénduloresorte:
+Masa objeto: 5.0
+angulo inicial: 0.6
+constante del resorte: 5.5
+
