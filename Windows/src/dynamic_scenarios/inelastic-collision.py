@@ -1,6 +1,13 @@
 from readfile import * 
 
-filename ='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_Colisiónlinealinelástica.txt'
+import os
+
+# Obtener la ruta del directorio actual
+dir_actual = os.path.dirname(os.path.abspath(__file__))
+
+# Construir la ruta al archivo .txt
+filename = os.path.join(dir_actual, 'data_Colisiónlinealinelástica.txt')
+
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
@@ -8,7 +15,6 @@ m1=data[0]
 m2=data[1]
 d=data[2]
 v01=data[3]
-v02=data[4]
 
 from vpython import *
 

@@ -1012,13 +1012,11 @@ class planoInclinadoPoleaDialog(QtWidgets.QDialog, Ui_DialogPlanoInclinadoPolea)
 
         masaObjeto_text = self.inptMasaObjeto.text()
         masaObjeto2_text = self.inptMasaObjeto2.text()
-        anguloInclinacion_text = self.inptAnguloInclinacion.text()
 
         # Verificar si los textos son números enteros
         try:
             masaObjeto = int(masaObjeto_text)
             masaObjeto2 = int(masaObjeto2_text)
-            anguloInclinacion = int(anguloInclinacion_text)
 
         except ValueError:
             if not masaObjeto_text.isdigit():
@@ -1030,11 +1028,6 @@ class planoInclinadoPoleaDialog(QtWidgets.QDialog, Ui_DialogPlanoInclinadoPolea)
                 self.lblErrorMasaObjeto2.setText("Dato incorrecto")
             else:
                 self.lblErrorMasaObjeto2.clear()
-
-            if not anguloInclinacion_text.isdigit():
-                self.lblErrorAnguloInclinacion.setText("Dato incorrecto")
-            else:
-                self.lblErrorAnguloInclinacion.clear()
 
             return
 
@@ -1051,16 +1044,13 @@ class planoInclinadoPoleaDialog(QtWidgets.QDialog, Ui_DialogPlanoInclinadoPolea)
             f.write("Variables para Planoinclinadopolea:\n")
             f.write(f"Masa ladrillo 1: {masaObjeto}\n")
             f.write(f"Masa ladrillo 2: {masaObjeto2}\n")
-            f.write(f"Angulo de inclinacion: {anguloInclinacion}\n")
 
         # Limpiar los mensajes de error si los valores son números enteros
         self.lblErrorMasaObjeto.clear()
         self.lblErrorMasaObjeto2.clear()
-        self.lblErrorAnguloInclinacion.clear()
 
         self.inptMasaObjeto.clear()
         self.inptMasaObjeto2.clear()
-        self.inptAnguloInclinacion.clear()
 
         # Establecer la carpeta actual como dynamic_scenarios
         os.chdir(carpeta)
@@ -1073,11 +1063,9 @@ class planoInclinadoPoleaDialog(QtWidgets.QDialog, Ui_DialogPlanoInclinadoPolea)
     def on_cancelar_clicked(self):
         self.lblErrorMasaObjeto.clear()
         self.lblErrorMasaObjeto2.clear()
-        self.lblErrorAnguloInclinacion.clear()
 
         self.inptMasaObjeto.clear()
         self.inptMasaObjeto2.clear()
-        self.inptAnguloInclinacion.clear()
 
         self.close()
 
@@ -1326,7 +1314,6 @@ class colisionLinealElasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealEla
         velocidadInicialLadrillo1_text = self.inptVelocidadLadrillo1()
 
         masaLadrillo2_text = self.inptMasaLadrillo2.text()
-        velocidadInicialLadrillo2_text = self.inptVelocidadLadrillo2()
 
         distanciaLadrillos_text = self.inptDistanciaLadrillos()
 
@@ -1336,7 +1323,6 @@ class colisionLinealElasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealEla
             velocidadInicialLadrillo1 = int(velocidadInicialLadrillo1_text)
 
             masaLadrillo2 = int(masaLadrillo2_text)
-            velocidadInicialLadrillo2 = int(velocidadInicialLadrillo2_text)
 
             distanciaLadrilos = int(distanciaLadrillos_text)
 
@@ -1347,14 +1333,19 @@ class colisionLinealElasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealEla
                 self.lblErrorMasaLadrillo1.clear()
 
             if not velocidadInicialLadrillo1.isdigit():
-                self.lblErro.setText("Dato incorrecto")
+                self.lblErrorVelocidadLadrillo1.setText("Dato incorrecto")
             else:
-                self.lblErrorDistanciaCompresion.clear()
+                self.lblErrorVelocidadLadrillo1.clear()
+
+            if not masaLadrillo2.isdigit():
+                self.lblErrorMasaLadrillo2.setText("Dato incorrecto")
+            else:
+                self.lblErrorMasaLadrillo2.clear()
 
             if not distanciaLadrilos.isdigit():
-                self.lblErrorConstanteResorte.setText("Dato incorrecto")
+                self.lblErrorDistanciaLadrillos.setText("Dato incorrecto")
             else:
-                self.lblErrorConstanteResorte.clear()
+                self.lblErrorDistanciaLadrillos.clear()
 
             return
 
@@ -1366,40 +1357,147 @@ class colisionLinealElasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealEla
             os.makedirs(carpeta)
 
         # Guardar en un archivo .txt dentro de la carpeta dynamic_scenarios
-        archivo = os.path.join(carpeta, 'data_Resorte.txt')
+        archivo = os.path.join(carpeta, 'data_Colisiónlinealelástica.txt')
         with open(archivo, 'w') as f:
-            f.write("Variables para Resorte:\n")
-            f.write(f"Masa objeto: {masaObjeto}\n")
-            f.write(f"Distancia de compresion: {distanciaCompresion}\n")
-            f.write(f"Constante del resorte: {constanteResorte}\n")
+            f.write("Variables para colisiónlinealelástica:\n")
+            f.write(f"Masa ladrillo 1: {masaLadrillo1}\n")
+            f.write(f"Velocidad ladrillo 1: {velocidadInicialLadrillo1}\n")
+            f.write(f"Masa ladrillo 2: {masaLadrillo2}\n")
+            f.write(f"Distancia entre ladrillos: {distanciaLadrilos}\n")
 
         # Limpiar los mensajes de error si los valores son números enteros
-        self.lblErrorMasaObjeto.clear()
+        self.lblErrorMasaLadrillo1.clear()
+        self.lblErrorMasaLadrillo2.clear()
         self.lblErrorDistanciaCompresion.clear()
-        self.lblErrorConstanteResorte.clear()
+        self.lblErrorVelocidadLadrillo1.clear()
+        self.lblErrorDistanciaLadrillos()
 
-        self.inptMasaObjeto.clear()
-        self.inptDistanciaCompresion.clear()
-        self.inptConstanteResorte.clear()
+        self.inptMasaLadrillo1.clear()
+        self.inptMasaLadrillo2.clear()
+        self.inptVelocidadLadrillo1()
+        self.inptDistanciaLadrillos.clear()
 
         # Establecer la carpeta actual como dynamic_scenarios
         os.chdir(carpeta)
 
         # Ejecutar el script pendulum.py desde la carpeta actual
-        subprocess.run(['python', 'spring.py'])
+        subprocess.run(['python', 'elastic-collision.py'])
 
         self.close()
 
     def on_cancelar_clicked(self):
-        self.lblErrorMasaObjeto.clear()
+        self.lblErrorMasaLadrillo1.clear()
+        self.lblErrorMasaLadrillo2.clear()
         self.lblErrorDistanciaCompresion.clear()
-        self.lblErrorConstanteResorte.clear()
+        self.lblErrorVelocidadLadrillo1.clear()
+        self.lblErrorDistanciaLadrillos()
 
-        self.inptMasaObjeto.clear()
-        self.inptDistanciaCompresion.clear()
-        self.inptConstanteResorte.clear()
+        self.inptMasaLadrillo1.clear()
+        self.inptMasaLadrillo2.clear()
+        self.inptVelocidadLadrillo1()
+        self.inptDistanciaLadrillos.clear()
 
         self.close()
+
+class colisionLinealInelasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealInelastica):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.btnSimular.clicked.connect(self.on_simular_clicked)
+        self.btnCancelar.clicked.connect(self.on_cancelar_clicked)
+
+    def on_simular_clicked(self):
+
+        masaLadrillo1_text = self.inptMasaLadrillo1.text()
+        velocidadInicialLadrillo1_text = self.inptVelocidadLadrillo1()
+
+        masaLadrillo2_text = self.inptMasaLadrillo2.text()
+
+        distanciaLadrillos_text = self.inptDistanciaLadrillos()
+
+        # Verificar si los textos son números enteros
+        try:
+            masaLadrillo1 = int(masaLadrillo1_text)
+            velocidadInicialLadrillo1 = int(velocidadInicialLadrillo1_text)
+
+            masaLadrillo2 = int(masaLadrillo2_text)
+
+            distanciaLadrilos = int(distanciaLadrillos_text)
+
+        except ValueError:
+            if not masaLadrillo1.isdigit():
+                self.lblErrorMasaLadrillo1.setText("Dato incorrecto")
+            else:
+                self.lblErrorMasaLadrillo1.clear()
+
+            if not velocidadInicialLadrillo1.isdigit():
+                self.lblErrorVelocidadLadrillo1.setText("Dato incorrecto")
+            else:
+                self.lblErrorVelocidadLadrillo1.clear()
+
+            if not masaLadrillo2.isdigit():
+                self.lblErrorMasaLadrillo2.setText("Dato incorrecto")
+            else:
+                self.lblErrorMasaLadrillo2.clear()
+
+            if not distanciaLadrilos.isdigit():
+                self.lblErrorDistanciaLadrillos.setText("Dato incorrecto")
+            else:
+                self.lblErrorDistanciaLadrillos.clear()
+
+            return
+
+        # Obtener la ruta completa a la carpeta dynamic_scenarios
+        carpeta = os.path.join(os.path.dirname(__file__), 'dynamic_scenarios')
+
+        # Crear la carpeta si no existe
+        if not os.path.exists(carpeta):
+            os.makedirs(carpeta)
+
+        # Guardar en un archivo .txt dentro de la carpeta dynamic_scenarios
+        archivo = os.path.join(carpeta, 'data_Colisiónlinealelástica.txt')
+        with open(archivo, 'w') as f:
+            f.write("Variables para colisiónlinealelástica:\n")
+            f.write(f"Masa ladrillo 1: {masaLadrillo1}\n")
+            f.write(f"Velocidad ladrillo 1: {velocidadInicialLadrillo1}\n")
+            f.write(f"Masa ladrillo 2: {masaLadrillo2}\n")
+            f.write(f"Distancia entre ladrillos: {distanciaLadrilos}\n")
+
+        # Limpiar los mensajes de error si los valores son números enteros
+        self.lblErrorMasaLadrillo1.clear()
+        self.lblErrorMasaLadrillo2.clear()
+        self.lblErrorDistanciaCompresion.clear()
+        self.lblErrorVelocidadLadrillo1.clear()
+        self.lblErrorDistanciaLadrillos()
+
+        self.inptMasaLadrillo1.clear()
+        self.inptMasaLadrillo2.clear()
+        self.inptVelocidadLadrillo1()
+        self.inptDistanciaLadrillos.clear()
+
+        # Establecer la carpeta actual como dynamic_scenarios
+        os.chdir(carpeta)
+
+        # Ejecutar el script pendulum.py desde la carpeta actual
+        subprocess.run(['python', 'elastic-collision.py'])
+
+        self.close()
+
+    def on_cancelar_clicked(self):
+        self.lblErrorMasaLadrillo1.clear()
+        self.lblErrorMasaLadrillo2.clear()
+        self.lblErrorDistanciaCompresion.clear()
+        self.lblErrorVelocidadLadrillo1.clear()
+        self.lblErrorDistanciaLadrillos()
+
+        self.inptMasaLadrillo1.clear()
+        self.inptMasaLadrillo2.clear()
+        self.inptVelocidadLadrillo1()
+        self.inptDistanciaLadrillos.clear()
+
+        self.close()
+
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -1420,6 +1518,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.btnPenduloResorte.clicked.connect(self.show_penduloResorte_dialog)
         self.ui.btnResorte.clicked.connect(self.show_resorte_dialog)
         self.ui.btnColisionLinealElastica.clicked.connect(self.show_colisionLinealElastica_dialog)
+        self.ui.btnColisionLinealnelastica.clicked.connect(self.show_colisionLinealInelastica_dialog)
 
         # Crear instancias de cadad dialogo
         self.mur_dialog = MurDialog()
@@ -1435,6 +1534,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.penduloResorte_dialog = penduloResorteDialog()
         self.resorte_dialog = resorteDialog()
         self.colisionLinealElastica_dialog = colisionLinealElasticaDialog()
+        self.colisionLinealInelastica_dialog = colisionLinealInelasticaDialog()
 
     def show_mur_dialog(self):
         # Mostrar el diálogo
@@ -1487,6 +1587,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def show_colisionLinealElastica_dialog(self):
         # Mostrar el diálogo
         self.colisionLinealElastica_dialog.exec_()
+
+    def show_colisionLinealInelastica_dialog(self):
+        # Mostrar el diálogo
+        self.colisionLinealInelastica_dialog.exec_()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

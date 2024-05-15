@@ -1,6 +1,13 @@
 from readfile import * 
 from vpython import * 
-filename ='C:\\Users\\Alex\\solve-dynamic-\\Windows\\src\\dynamic_scenarios\\data_Péndulo.txt'
+
+import os
+
+# Obtener la ruta del directorio actual
+dir_actual = os.path.dirname(os.path.abspath(__file__))
+
+# Construir la ruta al archivo .txt
+filename = os.path.join(dir_actual, 'data_Péndulo.txt')
 data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
