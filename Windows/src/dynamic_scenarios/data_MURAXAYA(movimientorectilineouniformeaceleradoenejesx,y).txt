@@ -1,0 +1,9 @@
+Variables para MURAXAYA(movimientorectilineouniformeaceleradoenejesx,y):
+Velocidad inicial en X: 1
+X inicial: 1
+Aceleración en X: 1
+Velocidad en Y: 1
+Distancia en Y: 1
+Aceleración en Y: 1
+Velocidad en Z: 1
+Distancia en Z: 1

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>705</width>
+    <height>412</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btnMur">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MUR</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMuraxaza">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>130</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURAXAZA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPlanoInclinadoPolea">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>210</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>PLANO INCLINADO POLEA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMura">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPendulo">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>210</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>PÉNDULO </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMurayaza">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>130</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURAYAZA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMuraxa">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURAXA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPenduloResorte">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>210</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>PÉNDULO RESORTE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMura3">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>130</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURA3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnResorte">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>210</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>RESORTE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnMuraxaya">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MURAXAYA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPlanoInclinado">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>130</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>PLANO INCLINADO</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnColisionLinealnelastica">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>290</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>COLISIÓN LINEAL INELÁSTICA </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnColisionLinealElastica">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>290</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #EDF2FE;
+    color: #3D63DD;
+    padding: 10px;
+    border: 1px solid #3D63DD;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #3D63DD;
+    color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>COLISIÓN LINEAL ELÁSTICA </string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

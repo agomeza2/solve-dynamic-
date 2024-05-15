@@ -1,4 +1,3 @@
 Variables para Péndulo:
-Masa objeto: 5.0
-angulo inicial: 0.2
-
+Masa objeto: 12
+Angulo de inclinacion: 3

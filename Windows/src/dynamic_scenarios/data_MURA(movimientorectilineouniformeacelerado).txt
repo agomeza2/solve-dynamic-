@@ -1,5 +1,4 @@
 Variables para MURA(movimientorectilineouniformeacelerado):
-Velocidad inicial: 3.0
-X inicial: 5.0
-Aceleración: 3.0
-
+Velocidad inicial: 23
+X inicial: 32
+Aceleración: 32
