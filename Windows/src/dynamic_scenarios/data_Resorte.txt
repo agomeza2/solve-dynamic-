@@ -1,4 +1,4 @@
 Variables para Resorte:
-Masa objeto: 2
-Distancia de compresion: 2
+Masa objeto: 25
+Distancia de compresion: 4
 Constante del resorte: 2

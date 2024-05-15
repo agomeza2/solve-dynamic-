@@ -1,4 +1,4 @@
 Variables para Péndulo:
 Masa objeto: 5
-Angulo de inclinacion: 6
+Angulo de inclinacion: 5
 Constante del resorte: 5

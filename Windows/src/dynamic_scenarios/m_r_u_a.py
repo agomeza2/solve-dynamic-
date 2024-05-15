@@ -6,7 +6,9 @@ import os
 dir_actual = os.path.dirname(os.path.abspath(__file__))
 
 # Construir la ruta al archivo .txt
-filename = os.path.join(dir_actual, 'data_MURA(movimientorectilineouniformeacelerado).txt')data_array = read_file(filename)
+filename = os.path.join(dir_actual, 'data_MURA(movimientorectilineouniformeacelerado).txt')
+
+data_array = read_file(filename)
 data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
 v0=data[0]

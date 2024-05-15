@@ -13,7 +13,6 @@ data_array1 = filter_numbers(data_array)
 data = float_array(data_array1)
 m1=data[0]
 m2=data[1]
-theta =data[2]
 
 plano2 = box(pos=vec(0,4.45,0),size=vec(20,1,20),axis=vec(1,-0.2,0),color=color.yellow) #planos amarillos
 plano1 = box(pos=vec(-20,5,0),size=vec(20,1,20),axis=vec(1,0.2,0),color=color.yellow)
