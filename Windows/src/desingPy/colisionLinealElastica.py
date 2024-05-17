@@ -21,7 +21,7 @@ class Ui_DialogColisionLinealElastica(object):
         self.inptVelocidadLadrillo1.setStyleSheet("background-color: white;")
         self.inptVelocidadLadrillo1.setObjectName("inptVelocidadLadrillo1")
         self.lblErrorVelocidadLadrillo1 = QtWidgets.QLabel(DialogColisionLinealElastica)
-        self.lblErrorVelocidadLadrillo1.setGeometry(QtCore.QRect(30, 120, 131, 16))
+        self.lblErrorVelocidadLadrillo1.setGeometry(QtCore.QRect(30, 200, 161, 20))
         self.lblErrorVelocidadLadrillo1.setText("")
         self.lblErrorVelocidadLadrillo1.setObjectName("lblErrorVelocidadLadrillo1")
         self.label_2 = QtWidgets.QLabel(DialogColisionLinealElastica)
