@@ -17,37 +17,60 @@ d=data[2]
 v01=data[3]
 
 from vpython import *
+scene.title = "Colisión Inelástica entre Dos Ladrillos"
+scene.width = 800
+scene.height = 600
 
-v1_initial = vector(v01, 0, 0)  # Initial velocity of the first brick (m/s)
-v2_initial = vector(0, 0, 0)  # Initial velocity of the second brick (m/s)
+# Parámetros iniciales
+L = 2.0  # Longitud del ladrillo
+W = 2.0  # Ancho del ladrillo
+H = 2.0  # Altura del ladrillo
 
-# Scene setup
-scene = canvas(title="Inelastic Collision", width=800, height=400)
-scene.autoscale = False
+# Ladrillo en movimiento
+background =box(pos=vector(d,-1,0),size=vector(d+40,0.3,10),color=color.green)
+brick1 = box(pos=vector(-5, 0, 0), size=vector(L, H, W), color=color.red)
+brick1.velocity = vector(2, 0, 0)  # Velocidad inicial del ladrillo 1
+brick1.mass = 2.0  # Masa del ladrillo 1
 
-# Bricks
-brick1 = box(pos=vector(d-5, 0, 0), size=vector(1, 1, 1), color=color.blue, velocity=v1_initial)
-brick2 = box(pos=vector(d+5, 0, 0), size=vector(1.5, 1.5, 1.5), color=color.red, velocity=v2_initial)
+# Ladrillo en reposo
+brick2 = box(pos=vector(0, 0, 0), size=vector(L, H, W), color=color.blue)
+brick2.velocity = vector(0, 0, 0)  # Velocidad inicial del ladrillo 2
+brick2.mass = 3.0  # Masa del ladrillo 2
 
-# Ground
-ground = box(pos=vector(d, -1, 0), size=vector(20*d, 0.1, d*10), color=color.green)
-
-# Time setup
+# Tiempo y delta de tiempo
+t = 0
 dt = 0.01
 
-# Main loop
-while brick1.pos.x<=2*d:
+while t < 10:
     rate(100)
     
-    # Update positions
+    # Movimiento de los ladrillos
     brick1.pos += brick1.velocity * dt
     brick2.pos += brick2.velocity * dt
     
-    # Check for collision
-    if brick1.pos.x + brick1.size.x / 2 >= brick2.pos.x - brick2.size.x / 2:
-        # Calculate final velocity of the combined system
-        v_final = (m1 * brick1.velocity + m2 * brick2.velocity) / (m1 + m2)
+    # Detección de colisión
+    if brick1.pos.x + L/2 >= brick2.pos.x - L/2:
+        # Ajustar posiciones para que los ladrillos queden pegados
+        overlap = (brick1.pos.x + L/2) - (brick2.pos.x - L/2)
+        brick1.pos.x -= overlap / 2
+        brick2.pos.x += overlap / 2
         
-        # Update velocities (inelastic collision)
-        brick1.velocity = v_final
-        brick2.velocity = v_final
+        # Calcular velocidad final
+        total_mass = brick1.mass + brick2.mass
+        brick1.velocity = (brick1.mass * brick1.velocity + brick2.mass * brick2.velocity) / total_mass
+        brick2.velocity = brick1.velocity
+        
+        # La colisión ocurre una vez, luego los ladrillos se mueven juntos
+        break
+    
+    t += dt
+
+# Continuar movimiento después de la colisión
+while t < 20:
+    rate(100)
+    
+    # Movimiento conjunto de los ladrillos después de la colisión
+    brick1.pos += brick1.velocity * dt
+    brick2.pos += brick2.velocity * dt
+    
+    t += dt

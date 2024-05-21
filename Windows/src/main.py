@@ -1438,7 +1438,7 @@ class colisionLinealInelasticaDialog(QtWidgets.QDialog, Ui_DialogColisionLinealI
         os.chdir(carpeta)
 
         # Ejecutar el script pendulum.py desde la carpeta actual
-        subprocess.run(['python', 'elastic-collision.py'])
+        subprocess.run(['python', 'inelastic-collision.py'])
 
         self.close()
 

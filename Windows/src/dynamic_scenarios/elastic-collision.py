@@ -17,13 +17,13 @@ m2=data[1]
 d=data[2]
 v01=data[3]
 carroiz = box(pos=vec(-10,0,0),size=vec(2,2,2),color = color.blue)
-carrode = box(pos=vec(d,0,0),size=vec(2,2,2),color = color.red)
+carrode = box(pos=vec(10+d,0,0),size=vec(2,2,2),color = color.red)
 flechaiz = arrow(pos=vec(-10,0,0),axis=vec(3,0,0),color=color.yellow)
-piso = box(pos=vec(0,-0.9,0), size=vec(40,0.5,10),color=color.green)
+piso = box(pos=vec(d,-0.9,0), size=vec(40+d,0.5,10),color=color.green)
 
 carroiz.vel=vec(v01,0,0) #blocks velocity 
 carrode.vel=vec(0,0,0)
-flechaiz.vel=vec(2,0,0)
+flechaiz.vel=vec(v01,0,0)
 carroiz.mass = m1 #blocks mass 
 carrode.mass =m2
 
@@ -38,9 +38,9 @@ while t<15:
     carroiz.pos=carroiz.pos + carroiz.vel*dt
     flechaiz.pos=flechaiz.pos + flechaiz.vel*dt
     carrode.pos = carrode.pos+carrode.vel*dt
-    if not flechaiz.pos.x<8:
+    if not flechaiz.pos.x<(8+d):
         carrode.vel=((2*carroiz.mass)/(carroiz.mass+carrode.mass))*carroiz.vel
-        flechade = arrow(pos=vec(10,0,0),axis=vec(3,0,0),color=color.yellow)
+        flechade = arrow(pos=vec(10+d,0,0),axis=vec(3,0,0),color=color.yellow)
         flechade.vel=((2*carroiz.mass)/(carroiz.mass+carrode.mass))*carroiz.vel
         flechade.pos = flechade.pos + flechade.vel*dt
         carroiz.vel=((carroiz.mass-carrode.mass)/(carroiz.mass+carrode.mass))*carroiz.vel
