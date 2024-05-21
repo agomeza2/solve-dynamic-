@@ -1,4 +1,0 @@
-Variables para MUR(movimientorectilineouniforme):
-Velocidad inicial: 2.0
-Distancia: 4.0
-

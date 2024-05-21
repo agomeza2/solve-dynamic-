@@ -1,4 +1,0 @@
-Variables para Péndulo:
-Masa objeto: None
-angulo inicial: None
-

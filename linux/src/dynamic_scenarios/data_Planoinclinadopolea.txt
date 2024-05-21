@@ -1,5 +1,0 @@
-Variables para Planoinclinadopolea:
-Masa ladrillo 1: 23.0
-masa ladrillo 2: 45.0
-angulo de inclinacion: 31.0
-
